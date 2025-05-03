@@ -1,0 +1,81 @@
+.content {
+  display: flex;
+  flex-direction: row;
+  /* background-color: red; */
+  width: 100%; /* Ensures it takes full width */
+  height: 670px;
+}
+.author-content {
+  width: 65%;
+  /* background-color: rgb(17, 162, 162); */
+  padding: 2%;
+}
+.heading-2 {
+  display: flex;
+  justify-content: flex-start;
+  font-size: 2rem;
+  color: black;
+  position: relative;
+  padding-bottom: 10px; /* Adds spacing below text */
+}
+/* underline */
+.heading-2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 275px; /* Adjust width as needed */
+  height: 4px; /* Thickness of the underline */
+  background: linear-gradient(
+    to right,
+    #e0dbd8,
+    #504742
+  ); /*  Stylish gradient */
+  border-radius: 2px;
+}
+
+.the-author {
+  color: #ffffff; /* Brighter white for better visibility */
+  font-family: "Poppins", sans-serif; /* Modern & elegant font */
+  font-size: 1.1rem; /* Slightly larger text for readability */
+  line-height: 1.6; /*  Increases spacing for better readability */
+  text-align: justify; /* Makes text look neater */
+  letter-spacing: 0.5px; /* Enhances clarity */
+  padding: 10px 0; /* Adds some spacing */
+}
+
+.know-more-button-2 {
+  display: flex;
+  justify-content: flex-start; /* Aligns button to the left */
+  margin-top: 20px; /*  Adds space between paragraph & button */
+}
+
+.know-more-button-2 .MuiButton-root {
+  background-color: #1100ff !important; /* Override MUI styles */
+  color: white !important;
+  font-size: 16px !important;
+  border-radius: 20px !important; /* Rounded edges */
+  text-transform: none !important;
+  display: block; /* Ensures button takes full width */
+  margin-top: 10px; /*  Space from the paragraph */
+}
+
+.know-more-button-2 .MuiButton-root:hover {
+  background-color: #4967ff !important; /* Hover effect */
+}
+
+.content-img{
+    width: 35%;
+    /* background-color: azure; */
+    display: flex; /* Enables centering */
+    justify-content: center; /* Centers horizontally */
+    align-items: center;
+}
+
+.author-img-2{
+    width: 80%;
+    height: auto;
+    align-items: center;
+    border-radius: 5%;
+    margin-top: 20%;
+}
