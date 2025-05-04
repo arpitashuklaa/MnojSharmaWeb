@@ -1,9 +1,9 @@
 import "./App.css";
 import Navbar from "./components/Navbar";
-import AboutAuthor from "./components/AboutAuthor";
 import AboutBooks from "./components/AboutBooks";
 import Content from "./components/Content";
 import AwardsRecognition from "./components/AwardsRecognition";
+import HeroSection from "./components/HeroSection";
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
         <Navbar />
       </div>
       <div className="body-container">
-        <AboutAuthor />
+        <HeroSection />
         <AboutBooks/>
         <Content/>
         <AwardsRecognition />

@@ -1,0 +1,116 @@
+.parent {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 80vh;
+    /* background: linear-gradient(135deg, #1a1a1a, #333); */
+    padding: 2rem 1rem;
+    color: #fff;
+  }
+  
+  .about {
+    width: 50%;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .about h1 {
+    font-size: 3.2rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+  
+  .author-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    color: #dcdcdc;
+  }
+  
+  .know-more-button {
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+  .author-img-container {
+    width: 50%;
+    min-width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+  }
+  
+  .author-img {
+    width: 100%;
+    max-width: 800px;
+    border-radius: 20px;
+    object-fit: cover;
+    box-shadow: 0 10px 25px rgba(15, 13, 105, 0.4);
+  }
+  
+  /* Tablets */
+  @media screen and (max-width: 768px) {
+    .parent {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      /* flex-direction: column-reverse; */
+      padding: 2rem 1rem;
+      margin-bottom: 6rem;
+    }
+
+  
+    .about,
+    .author-img-container {
+      width: 100%;
+      padding: 1rem;
+      align-items: center;
+      text-align: center;
+    }
+  
+    .about h1 {
+      font-size: 2.5rem;
+    }
+  
+    .author-quote {
+      text-align: center;
+    }
+  
+    .know-more-button {
+      justify-content: center;
+    }
+  }
+  
+  /* Mobile Phones */
+  @media screen and (max-width: 480px) {
+
+    .parent{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    .about h1 {
+      font-size: 2rem;
+    }
+  
+    .author-quote {
+      font-size: 0.95rem;
+    }
+  
+    .author-img {
+      width: 90%;
+    }
+  }
+  

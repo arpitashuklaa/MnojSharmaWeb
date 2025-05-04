@@ -1,55 +1,81 @@
-/* General button styling */
+@import "tailwindcss";
 
+.nav-full{
+  margin-bottom: 60px;
+}
+
+/* Navbar container */
 .navbar-container {
-  height: auto;
-  background-color: #ff9933;
+  background-color: #547792;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-}
-.author-name {
-  width: 50%;
-  padding: 15px;
-  margin-left: 10%;
-  font-family: "Poppins", sans-serif !important ; /* Modern font */
-  font-size: 30px !important; /* Increased font size */
-  font-weight: 600 !important; /* Bolder text */
-  text-transform: uppercase !important; /* Capital letters */
-  color: #f5e1e1 !important; /* Soft off-white for better contrast */
-  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8) !important; /* Smooth text shadow for depth */
-  transition: all 0.3s ease-in-out !important; /* Smooth transition */
+  align-items: center;
+  padding: 12px 8%;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* Brand Name */
+.author-name {
+  font-family: "Poppins", sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #f5e1e1;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+  transition: all 0.3s ease-in-out;
+}
+
+/* Nav buttons on desktop */
 .button-container {
-  width: 50%;
-  padding: 15px;
+  display: flex;
+  gap: 24px;
+  font-size: 18px !important; 
+}
+
+/* Nav button styling */
+.action-button {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff !important;
+  background: transparent;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease-in-out;
+}
+
+.action-button:hover {
+  color: #ECEFCA !important;
+  transform: scale(1.05);
+}
+
+/* Hamburger Icon (mobile only) */
+.menu-icon {
+  display: none !important;
+  color: white;
+}
+
+/* Drawer Header */
+.drawer-header {
   display: flex;
   justify-content: flex-end;
-  margin-right: 10%;
-}
-.action-button {
-    font-family: "Poppins", sans-serif !important ;
-    font-size: 16px !important;
-    font-weight: 600 !important;
-    color: #f5f5f5 !important;
-    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5) !important;
-    transition: all 0.3s ease-in-out !important;
+  padding: 1rem;
 }
 
-/* .button-container {
-  font-family: "Poppins", sans-serif !important ;
-  font-size: 16px !important;
-  font-weight: 600 !important;
-  color: #f5f5f5 !important;
-  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5) !important;
-  transition: all 0.3s ease-in-out !important;
-} */
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+  .button-container {
+    display: none;
+  }
 
-/* .author-name:hover {
-    color: #ffdd99 !important; 
-    text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8); 
+  .menu-icon {
+    display: block !important;
+  }
+
+  .author-name {
+    font-size: 20px;
+  }
 }
-
-.author-name:active {
-    transform: scale(0.95);
-} */
