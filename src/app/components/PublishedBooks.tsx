@@ -7,7 +7,7 @@ const PublishedBooks = () => {
   const books = [
     {
       id: 1,
-      title: "Etchings of the First Quarter of 2020",
+      title: "Me No Pause Me Play",
       description:
         "Sabarna Roy was awarded the Literoma Laureate Award for Fiction in 2019",
       image: "/images/books/book1.jpeg",

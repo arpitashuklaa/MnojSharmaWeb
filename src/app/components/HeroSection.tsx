@@ -1,6 +1,6 @@
 'use client'
 
-"use client";
+
 import React from "react";
 import heroImg from "../../../public/images/author/Authorimg.jpeg";
 import Image from "next/image";
