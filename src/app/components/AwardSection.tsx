@@ -67,7 +67,7 @@ export default function AwardSection() {
             key={book.id}
             className="group flex flex-col items-center max-w-xs text-center p-6 rounded-xl transition-all duration-300 hover:bg-amber-800/30 hover:shadow-lg hover:shadow-amber-500/20 mx-auto"
           >
-            <div className="relative w-[150px] h-[220px] mb-6 overflow-hidden rounded-lg group-hover:shadow-xl group-hover:shadow-amber-500/30 transition-all duration-300">
+            <div className="relative w-[300px] h-[220px] mb-6 overflow-hidden rounded-lg group-hover:shadow-xl group-hover:shadow-amber-500/30 transition-all duration-300">
               <Image
                 src={book.image}
                 alt={book.alt}
