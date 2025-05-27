@@ -4,7 +4,13 @@ import { FiMenu, FiX } from 'react-icons/fi';
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const navItems = ["Home", "About Me", "Buy", "Testimonials", "Contact"];
+  const navItems = [
+    { name: "Home", link: "/" },
+    { name: "About Me", link: "/about" },
+    { name: "Buy", link: "/products" },
+    { name: "Testimonials", link: "/testimonials" },
+    { name: "Contact", link: "/contact" }
+  ];
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -21,12 +27,12 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <ul className="hidden md:flex space-x-6">
             {navItems.map((item) => (
-              <li key={item}>
+              <li key={item.name}>
                 <a
-                  href={`#${item.toLowerCase().replace(' ', '-')}`}
+                  href={item.link}
                   className="text-white hover:bg-amber-600 px-3 py-2 rounded-md transition-colors duration-300 font-medium block"
                 >
-                  {item}
+                  {item.name}
                 </a>
               </li>
             ))}
@@ -71,14 +77,14 @@ const Navbar = () => {
             
             <ul className="px-4 py-2 space-y-2">
               {navItems.map((item, index) => (
-                <li key={item}>
+                <li key={item.name}>
                   <a
-                    href={`#${item.toLowerCase().replace(' ', '-')}`}
+                    href={item.link}
                     className="block px-4 py-3 text-white hover:bg-amber-600 rounded-md transition-all duration-500 ease-out opacity-100 translate-x-0"
                     style={{ transitionDelay: `${index * 100}ms` }}
                     onClick={toggleMobileMenu}
                   >
-                    {item}
+                    {item.name}
                   </a>
                 </li>
               ))}
