@@ -1,16 +1,12 @@
-// import Navbar from "@/app/components/Navbar";
-import HeroSection from "./components/HeroSection";
-import AboutAuthor from "./components/AboutAuthor";
-import PublishedBooks from "./components/PublishedBooks";
-import AwardSection from './components/AwardSection';
+'use client';
+import React from 'react';
+import HomePage from './components/homePage/HomePage';
+
 
 export default function Home() {
   return (
-    <>
-      <HeroSection />
-      <PublishedBooks/>
-      <AboutAuthor/>
-      <AwardSection/>
-    </>
+    <main>
+      <HomePage/>
+    </main>
   );
 }

@@ -1,39 +1,90 @@
+'use client';
 import React from "react";
 import Image from "next/image";
+import { motion } from 'framer-motion';
 
 export default function About() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6
+      }
+    }
+  };
+
   return (
-    <>
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+    >
       {/* Section 1: About The Author */}
-      <section className="bg-gradient-to-b from-amber-700 to-amber-800 text-white px-6 py-12 md:py-20">
+      <motion.section 
+        variants={itemVariants}
+        className="bg-gradient-to-b from-amber-700 to-amber-800 text-white px-6 py-12 md:py-20"
+      >
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center gap-10 md:gap-16">
-          <div className="flex-shrink-0 w-56 md:w-64">
+          <motion.div 
+            variants={itemVariants}
+            className="flex-shrink-0 w-56 md:w-64"
+          >
             <img
               alt="Author portrait photo"
-              className="w-full h-auto object-cover rounded-lg shadow-xl"
+              className="w-full h-auto object-cover rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300"
               src="https://storage.googleapis.com/a1aa/image/86b2ec93-4455-493b-da70-d8ed9f7cad6b.jpg"
               width={256}
               height={256}
             />
-          </div>
-          <div className="flex-1 max-w-4xl">
-            <h2 className="text-2xl md:text-3xl font-bold mb-3">
+          </motion.div>
+          <motion.div 
+            variants={itemVariants}
+            className="flex-1 max-w-4xl"
+          >
+            <motion.h2 
+              variants={itemVariants}
+              className="text-2xl md:text-3xl font-bold mb-3"
+            >
               About The Author
-            </h2>
-            <div className="flex items-center gap-2 mb-6">
+            </motion.h2>
+            <motion.div 
+              variants={itemVariants}
+              className="flex items-center gap-2 mb-6"
+            >
               <div className="w-20 h-[3px] bg-amber-400 rounded" />
               <div className="w-2 h-2 rounded-full bg-amber-400" />
               <div className="w-2 h-2 rounded-full bg-amber-400" />
               <div className="w-2 h-2 rounded-full bg-amber-400" />
-            </div>
-            <p className="uppercase text-sm md:text-base font-semibold mb-4 leading-relaxed tracking-wide">
+            </motion.div>
+            <motion.p 
+              variants={itemVariants}
+              className="uppercase text-sm md:text-base font-semibold mb-4 leading-relaxed tracking-wide"
+            >
               SENIOR ENGINEERING PROFESSIONAL, AUTHOR, TRAVELER, READER.
-            </p>
-            <p className="text-base md:text-lg leading-relaxed mb-4">
+            </motion.p>
+            <motion.p 
+              variants={itemVariants}
+              className="text-base md:text-lg leading-relaxed mb-4"
+            >
               Manoj Kumar Sharma was Senior Vice President [Business
               Development] at Electrosteel Castings Limited...
-            </p>
-            <p className="text-base md:text-lg leading-relaxed">
+            </motion.p>
+            <motion.p 
+              variants={itemVariants}
+              className="text-base md:text-lg leading-relaxed"
+            >
               Manoj Kumar Sharma has been selected among the India Today Group:
               Icons of India. Lorem ipsum dolor sit amet consectetur adipisicing
               elit. Voluptas, quibusdam perferendis id sequi molestiae sit dolor
@@ -47,20 +98,26 @@ export default function About() {
               accusantium quaerat assumenda ratione at molestias fugit. Alias
               nostrum, minus perferendis ipsam nisi praesentium sunt doloribus,
               illo, quibusdam iure amet dolorem!
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Section 2: Awards and Literary Works */}
-      <section className="px-6 py-12 md:py-20 max-w-7xl mx-auto bg-white">
+      <motion.section 
+        variants={itemVariants}
+        className="px-6 py-12 md:py-20 max-w-7xl mx-auto bg-white"
+      >
         <div className="flex flex-col md:flex-row md:items-center md:gap-12">
-          <div className="md:w-1/2 text-base md:text-lg leading-relaxed text-amber-900">
-            <p className="mb-6">
+          <motion.div 
+            variants={itemVariants}
+            className="md:w-1/2 text-base md:text-lg leading-relaxed text-amber-900"
+          >
+            <motion.p variants={itemVariants} className="mb-6">
               Manoj Kumar Sharma has received the Best Author to Watch 2022
               Award...
-            </p>
-            <p className="mb-6">
+            </motion.p>
+            <motion.p variants={itemVariants} className="mb-6">
               Azteca University, Mexico has conferred an Honorary Doctor of Arts
               to Manoj Kumar Sharma... Lorem ipsum dolor, sit amet consectetur
               adipisicing elit. Laboriosam non temporibus officiis beatae
@@ -70,27 +127,33 @@ export default function About() {
               perspiciatis nulla magni nam. Voluptate nihil repudiandae quae
               aspernatur, omnis voluptates nemo. Laudantium quidem tenetur
               cumque repudiandae similique animi.
-            </p>
-          </div>
-          <div className="md:w-1/2 mt-8 md:mt-0 flex justify-center md:justify-end">
+            </motion.p>
+          </motion.div>
+          <motion.div 
+            variants={itemVariants}
+            className="md:w-1/2 mt-8 md:mt-0 flex justify-center md:justify-end"
+          >
             <img
               alt="Award group photo"
-              className="shadow-xl rounded-lg max-w-full h-auto border-4 border-amber-500"
+              className="shadow-xl rounded-lg max-w-full h-auto border-4 border-amber-500 hover:shadow-2xl transition-shadow duration-300"
               src="https://storage.googleapis.com/a1aa/image/fcf21ac4-3e40-40f5-60f6-f37c54754aba.jpg"
               width={500}
               height={325}
             />
-          </div>
+          </motion.div>
         </div>
-        <div className="mt-16 text-amber-900">
-          <p className="mb-6 text-lg md:text-xl font-semibold">
+        <motion.div 
+          variants={itemVariants}
+          className="mt-16 text-amber-900"
+        >
+          <motion.p variants={itemVariants} className="mb-6 text-lg md:text-xl font-semibold">
             Sabarna has received the Most Iconic Author of the Year, 2022 from
             the Government of Punjab.
-          </p>
-          <p className="mb-4 text-lg md:text-xl font-semibold">
+          </motion.p>
+          <motion.p variants={itemVariants} className="mb-4 text-lg md:text-xl font-semibold">
             Manoj Kumar Sharma's literary works are:
-          </p>
-          <ul className="list-disc list-inside mb-8 text-base md:text-lg space-y-2">
+          </motion.p>
+          <motion.ul variants={itemVariants} className="list-disc list-inside mb-8 text-base md:text-lg space-y-2">
             <li>Pentacles Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque, commodi?</li>
             <li>Frosted Glass Lorem ipsum dolor sit amet consectetur adipisicing elit. In, earum.</li>
             <li>Abyss Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus, iste.</li>
@@ -101,11 +164,11 @@ export default function About() {
             <li>A Marriage, an Affair, and a Friendship. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus, iste.</li>
             <li>Tara and Sandy: Slow Dance of Infinite Stars Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus, iste.</li>
             <li>Thirty Summer Poems and Conversations about a Murder Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus, iste.</li>
-          </ul>
-          <p className="mb-4 text-lg md:text-xl font-semibold">
+          </motion.ul>
+          <motion.p variants={itemVariants} className="mb-4 text-lg md:text-xl font-semibold">
             Manoj Kumar Sharma's technical works are:
-          </p>
-          <ul className="list-disc list-inside text-base md:text-lg space-y-2">
+          </motion.p>
+          <motion.ul variants={itemVariants} className="list-disc list-inside text-base md:text-lg space-y-2">
             <li>
               Articles on Ductile Iron Pipelines and Framework Agreement
               Methodology
@@ -114,23 +177,35 @@ export default function About() {
               Technological Trends in Water Sector for a Sustainable Solution
             </li>
             <li>Emerging Environmental Technologies and Policies.</li>
-          </ul>
-        </div>
-      </section>
+          </motion.ul>
+        </motion.div>
+      </motion.section>
 
       {/* Section 3: Awards & Recognition */}
-      <section className="bg-gradient-to-b from-amber-50 to-amber-100 py-12 md:py-20 px-6">
+      <motion.section 
+        variants={itemVariants}
+        className="bg-gradient-to-b from-amber-50 to-amber-100 py-12 md:py-20 px-6"
+      >
         <div className="max-w-7xl mx-auto">
-          <h3 className="text-center text-amber-900 font-bold text-2xl md:text-3xl mb-4">
+          <motion.h3 
+            variants={itemVariants}
+            className="text-center text-amber-900 font-bold text-2xl md:text-3xl mb-4"
+          >
             AWARDS &amp; RECOGNITION
-          </h3>
-          <div className="flex justify-center mb-12">
+          </motion.h3>
+          <motion.div 
+            variants={itemVariants}
+            className="flex justify-center mb-12"
+          >
             <div className="w-24 h-[3px] bg-amber-500 rounded" />
             <div className="w-2 h-2 rounded-full bg-amber-500 mx-2" />
             <div className="w-2 h-2 rounded-full bg-amber-500" />
             <div className="w-2 h-2 rounded-full bg-amber-500 ml-2" />
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
+          </motion.div>
+          <motion.div 
+            variants={itemVariants}
+            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8"
+          >
             {[
               "c2196530-78b2-4f1d-473f-cb2fd8779a98",
               "c5a5eb7a-54e4-48c7-9008-4ce857b3acea",
@@ -142,18 +217,20 @@ export default function About() {
               "76a86088-9dce-48b6-cea1-a64415959a04",
               "e3a7f4a1-6cc7-42f4-9491-dbe7d3d463a4",
             ].map((imgId, index) => (
-              <img
+              <motion.img
                 key={index}
+                variants={itemVariants}
+                whileHover={{ scale: 1.05 }}
                 alt={`Award image ${index + 1}`}
-                className="w-full h-auto object-contain border-4 border-amber-600 rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
+                className="w-full h-auto object-contain border-4 border-amber-600 rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300"
                 src={`https://storage.googleapis.com/a1aa/image/${imgId}.jpg`}
                 width={300}
                 height={300}
               />
             ))}
-          </div>
+          </motion.div>
         </div>
-      </section>
-    </>
+      </motion.section>
+    </motion.div>
   );
 }
