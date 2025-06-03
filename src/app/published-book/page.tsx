@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { FiBookOpen, FiCalendar, FiShoppingCart } from 'react-icons/fi';
 import Link from 'next/link';
 
-const ProductsPage = () => {
+const PublishedBookPage = () => {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -26,7 +26,7 @@ const ProductsPage = () => {
     }
   };
 
-  const products = [
+  const books = [
     {
       title: "Pentacles",
       description: "A collection of spiritual poems and reflections that will touch your soul and inspire your journey.",
@@ -81,7 +81,7 @@ const ProductsPage = () => {
           animate={{ opacity: 1, y: 0 }}
           className="text-4xl md:text-5xl font-bold text-center text-[var(--text-primary)] mb-16 relative"
         >
-          Our Products
+          Published Books
           <motion.div
             initial={{ width: 0 }}
             animate={{ width: "100px" }}
@@ -96,15 +96,15 @@ const ProductsPage = () => {
           animate="visible"
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto"
         >
-          {products.map((product) => (
-            <Link href={`/products/${product.slug}`} key={product.title}>
+          {books.map((book) => (
+            <Link href={`/published-book/${book.slug}`} key={book.title}>
               <motion.div
                 variants={itemVariants}
                 whileHover={{ 
                   y: -10,
                   transition: { duration: 0.3 }
                 }}
-                className="product-card group bg-white cursor-pointer rounded-xl shadow-lg overflow-hidden"
+                className="book-card group bg-white cursor-pointer rounded-xl shadow-lg overflow-hidden"
               >
                 <div className="relative h-64">
                   <motion.div
@@ -127,19 +127,19 @@ const ProductsPage = () => {
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-3 group-hover:text-[var(--saffron-primary)] transition-colors duration-300">
-                    {product.title}
+                    {book.title}
                   </h3>
                   <p className="text-[var(--text-secondary)] mb-4 line-clamp-2">
-                    {product.description}
+                    {book.description}
                   </p>
                   <div className="flex items-center mb-4">
                     <div className="flex text-[var(--saffron-primary)]">
-                      {[...Array(product.rating)].map((_, i) => (
+                      {[...Array(book.rating)].map((_, i) => (
                         <FiBookOpen key={i} className="w-4 h-4 fill-current" />
                       ))}
                     </div>
                     <span className="text-sm text-[var(--text-secondary)] ml-2">
-                      ({product.reviews} reviews)
+                      ({book.reviews} reviews)
                     </span>
                   </div>
                   <div className="flex justify-between items-center">
@@ -148,7 +148,7 @@ const ProductsPage = () => {
                       className="flex items-center text-[var(--saffron-primary)]"
                     >
                       <FiCalendar className="w-5 h-5 mr-2" />
-                      <span className="font-medium">{product.year}</span>
+                      <span className="font-medium">{book.year}</span>
                     </motion.div>
                     <motion.button
                       whileHover={{ scale: 1.05 }}
@@ -161,7 +161,7 @@ const ProductsPage = () => {
                       }}
                     >
                       <FiShoppingCart className="w-5 h-5" />
-                      <span>{product.price}</span>
+                      <span>{book.price}</span>
                     </motion.button>
                   </div>
                 </div>
@@ -174,4 +174,4 @@ const ProductsPage = () => {
   );
 };
 
-export default ProductsPage; 
+export default PublishedBookPage; 

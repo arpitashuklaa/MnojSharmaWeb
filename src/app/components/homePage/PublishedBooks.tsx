@@ -122,7 +122,7 @@ const PublishedBooks = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
           {books.map((book, index) => (
-            <Link href={`/books/${book.slug}`} key={book.title}>
+            <Link href={`/published-book/${book.slug}`} key={book.title}>
               <motion.div
                 variants={itemVariants}
                 whileHover={{ 
