@@ -1,20 +1,17 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { Suspense } from "react";
-import Loader from "./components/Loader";
+import CartSidebar from "./components/CartSidebar";
+import { AuthProvider } from "./components/AuthContext";
+import { CartProvider } from "./components/CartContext";
 
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  variable: "--font-montserrat",
-  display: "swap",
-});
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Manoj Kumar Sharma",
-  description: "Most Influential Author",
+  title: "Manoj Kumar Sharma - Author & Poet",
+  description: "Explore the literary works of Manoj Kumar Sharma, featuring poetry, prose, and spiritual reflections.",
 };
 
 export default function RootLayout({
@@ -24,16 +21,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${montserrat.variable} font-montserrat antialiased min-h-screen flex flex-col`}
-      >
-        <Suspense fallback={<Loader />}>
-          <Header />
-          <main className="flex-grow">
-            {children}
-          </main>
-          <Footer />
-        </Suspense>
+      <body className={inter.className}>
+        <AuthProvider>
+          <CartProvider>
+            <div className="flex flex-col min-h-screen">
+              <Header />
+              <main className="flex-grow">
+                {children}
+              </main>
+              <Footer />
+              <CartSidebar />
+            </div>
+          </CartProvider>
+        </AuthProvider>
       </body>
     </html>
   );

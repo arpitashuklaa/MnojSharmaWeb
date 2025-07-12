@@ -1,133 +1,216 @@
-"use client";
-import { useState } from "react";
-import { FiMenu, FiX } from "react-icons/fi";
-import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
+'use client';
+import React, { useState } from 'react';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { FiMenu, FiX, FiShoppingCart, FiUser, FiLogOut } from 'react-icons/fi';
+import { useAuth } from './AuthContext';
+import { useCart } from './CartContext';
+import CartSidebar from './CartSidebar';
 
 const Header = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const navItems = [
-    { name: "Home", link: "/" },
-    { name: "About Me", link: "/about" },
-    { name: "Buy", link: "/published-book" },
-    { name: "Testimonials", link: "/testimonials" },
-    { name: "Contact", link: "/contact" },
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { user, logout } = useAuth();
+  const { getCartCount, openCart } = useCart();
+
+  const navigation = [
+    { name: 'Home', href: '/' },
+    { name: 'Books', href: '/published-book' },
+    { name: 'About', href: '/about' },
+    { name: 'Contact', href: '/contact' },
+    { name: 'Testimonials', href: '/testimonials' },
   ];
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
+  const handleLogout = () => {
+    logout();
+    setIsMenuOpen(false);
   };
 
   return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="w-full bg-gradient-to-r from-[var(--saffron-darker)] to-[var(--saffron-dark)] shadow-lg sticky top-0 z-50"
-    >
-      <div className="container mx-auto px-4 py-4">
-        <nav className="flex justify-between items-center">
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="text-white font-bold text-2xl md:text-3xl tracking-wide"
-          >
-            Manoj Kumar Sharma
-          </motion.div>
-
-          {/* Desktop Navigation */}
-          <ul className="hidden md:flex space-x-8">
-            {navItems.map((item, index) => (
-              <motion.li
-                key={item.name}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
+    <>
+      <header className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            {/* Logo */}
+            <Link href="/" className="flex items-center space-x-2">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                className="text-2xl font-bold text-amber-600"
               >
+                MKS
+              </motion.div>
+              <div className="hidden sm:block">
+                <div className="text-sm font-medium text-gray-900">Manoj Kumar Sharma</div>
+                <div className="text-xs text-gray-500">Author & Poet</div>
+              </div>
+            </Link>
+
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex space-x-8">
+              {navigation.map((item) => (
                 <Link
-                  href={item.link}
-                  className="text-white hover:text-[var(--saffron-light)] px-3 py-2 rounded-md transition-colors duration-300 font-medium block relative group"
+                  key={item.name}
+                  href={item.href}
+                  className="text-gray-700 hover:text-amber-600 px-3 py-2 text-sm font-medium transition-colors"
                 >
                   {item.name}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[var(--saffron-light)] transition-all duration-300 group-hover:w-full"></span>
                 </Link>
-              </motion.li>
-            ))}
-          </ul>
+              ))}
+            </nav>
 
-          {/* Mobile Menu Button */}
-          {!isMobileMenuOpen && (
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              onClick={toggleMobileMenu}
-              className="md:hidden text-white p-2 focus:outline-none"
-              aria-label="Open menu"
-            >
-              <FiMenu className="h-6 w-6" />
-            </motion.button>
-          )}
-        </nav>
-      </div>
+            {/* User Actions */}
+            <div className="flex items-center space-x-4">
+              {/* Cart Icon */}
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                onClick={openCart}
+                className="relative p-2 text-gray-700 hover:text-amber-600 transition-colors"
+              >
+                <FiShoppingCart className="w-6 h-6" />
+                {getCartCount() > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-amber-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                    {getCartCount()}
+                  </span>
+                )}
+              </motion.button>
 
-      {/* Mobile Menu Overlay */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 md:hidden"
-          >
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/30"
-              onClick={toggleMobileMenu}
-            />
-
-            <motion.div
-              initial={{ x: "-100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "-100%" }}
-              transition={{ type: "spring", damping: 20 }}
-              className="fixed left-0 top-0 h-full w-64 bg-gradient-to-b from-[var(--saffron-darker)] to-[var(--saffron-dark)] shadow-xl"
-            >
-              <div className="flex justify-end p-4">
-                <motion.button
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  onClick={toggleMobileMenu}
-                  className="text-white p-2 focus:outline-none"
-                  aria-label="Close menu"
-                >
-                  <FiX className="h-6 w-6" />
-                </motion.button>
-              </div>
-
-              <ul className="px-4 py-2 space-y-2">
-                {navItems.map((item, index) => (
-                  <motion.li
-                    key={item.name}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
+              {/* User Menu */}
+              {user ? (
+                <div className="relative">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    className="flex items-center space-x-2 p-2 rounded-lg hover:bg-gray-100 transition-colors"
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
                   >
-                    <Link
-                      href={item.link}
-                      className="block px-4 py-3 text-white hover:bg-[var(--saffron-accent)] rounded-md transition-all duration-300"
-                      onClick={toggleMobileMenu}
+                    <img
+                      src={user.avatar}
+                      alt={user.name}
+                      className="w-8 h-8 rounded-full"
+                    />
+                    <span className="hidden sm:block text-sm font-medium text-gray-700">
+                      {user.name}
+                    </span>
+                  </motion.button>
+
+                  {/* Dropdown Menu */}
+                  {isMenuOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2"
                     >
-                      {item.name}
-                    </Link>
-                  </motion.li>
+                      <div className="px-4 py-2 border-b border-gray-100">
+                        <p className="text-sm font-medium text-gray-900">{user.name}</p>
+                        <p className="text-xs text-gray-500">{user.email}</p>
+                      </div>
+                      <Link
+                        href="/profile"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        <FiUser className="inline w-4 h-4 mr-2" />
+                        Profile
+                      </Link>
+                      <Link
+                        href="/orders"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        My Orders
+                      </Link>
+                      <button
+                        onClick={handleLogout}
+                        className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
+                      >
+                        <FiLogOut className="inline w-4 h-4 mr-2" />
+                        Logout
+                      </button>
+                    </motion.div>
+                  )}
+                </div>
+              ) : (
+                <div className="flex items-center space-x-2">
+                  <Link href="/auth/login">
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-amber-600 transition-colors"
+                    >
+                      Login
+                    </motion.button>
+                  </Link>
+                  <Link href="/auth/register">
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="px-4 py-2 text-sm font-medium text-white bg-amber-600 hover:bg-amber-700 rounded-lg transition-colors"
+                    >
+                      Sign Up
+                    </motion.button>
+                  </Link>
+                </div>
+              )}
+
+              {/* Mobile menu button */}
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="md:hidden p-2 text-gray-700 hover:text-amber-600 transition-colors"
+              >
+                {isMenuOpen ? (
+                  <FiX className="w-6 h-6" />
+                ) : (
+                  <FiMenu className="w-6 h-6" />
+                )}
+              </button>
+            </div>
+          </div>
+
+          {/* Mobile Navigation */}
+          {isMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden border-t border-gray-200 py-4"
+            >
+              <nav className="space-y-2">
+                {navigation.map((item) => (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className="block px-3 py-2 text-gray-700 hover:text-amber-600 text-sm font-medium transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
                 ))}
-              </ul>
+                {!user && (
+                  <>
+                    <Link
+                      href="/auth/login"
+                      className="block px-3 py-2 text-gray-700 hover:text-amber-600 text-sm font-medium transition-colors"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      Login
+                    </Link>
+                    <Link
+                      href="/auth/register"
+                      className="block px-3 py-2 text-gray-700 hover:text-amber-600 text-sm font-medium transition-colors"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      Sign Up
+                    </Link>
+                  </>
+                )}
+              </nav>
             </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.header>
+          )}
+        </div>
+      </header>
+
+      {/* Cart Sidebar */}
+      <CartSidebar />
+    </>
   );
 };
 

@@ -89,7 +89,7 @@ function AboutAuthor() {
               <Image
                 src={authorImg}
                 alt="Manoj Kumar Sharma"
-                fill
+                // fill
                 priority
                 className="object-cover object-center"
                 sizes="(max-width: 768px) 100vw, 50vw"
