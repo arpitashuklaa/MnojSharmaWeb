@@ -52,12 +52,12 @@ function Hero() {
           </div>
 
           <div className="flex justify-start">
-            <button
-              onClick={() => alert("More about the author coming soon!")}
+            <a
+              href="/about"
               className="px-8 py-3 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white rounded-full font-medium text-lg shadow-lg hover:shadow-amber-300/50 transition-all duration-300"
             >
               Know More
-            </button>
+            </a>
           </div>
         </div>
 
